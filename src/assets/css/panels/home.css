@@ -1,0 +1,213 @@
+.bottom-bar-home {
+    position: fixed;
+
+}
+
+.player-head {
+    margin: auto 30px;
+    background-image: url("../../images/default/setve.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+
+}
+
+.player-head:hover {
+    border-radius: 5px;
+}
+
+.settings-btn {
+    position: absolute;
+
+}
+
+.settings-btn:hover {
+    border-radius: 5px;
+
+}
+
+.icon-settings:before {
+    font-size: 40px;
+}
+
+.play-element {
+    position: absolute;
+
+}
+
+.play-btn {
+    top: 10px;
+    width: 160px;
+    height: 37px;
+    border-radius: 20px;
+    border: none;
+
+}
+
+.download-content {
+    position: absolute;
+
+}
+
+.text-download,
+.progress-bar {
+    display: none;
+}
+
+.text-download {
+    font-size: 15px;
+}
+
+.progress-bar {
+    background-color: transparent;
+    height: 10px;
+}
+
+.progress-bar::-webkit-progress-bar {
+    background-color: #797979;
+    border-radius: 10px;
+}
+
+.progress-bar::-webkit-progress-value {
+    background-color: #00bd7a;
+    border-radius: 10px;
+}
+
+.body-home {
+    display: flex;
+
+}
+
+.news-list {
+    position: relative;
+
+}
+
+.news-list::-webkit-scrollbar {
+    width: 0;
+}
+
+.news-block {
+    margin-bottom: 1rem;
+    transition: opacity 1s;
+    opacity: .4;
+}
+
+.news-block:hover {
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+.opacity-1 {
+    opacity: 1;
+}
+
+.news-header {
+    position: relative;
+
+}
+
+.title {
+    position: absolute;
+
+}
+
+.date {
+    position: absolute;
+
+}
+
+.day {
+    font-size: 28px;
+    margin-bottom: -10px;
+    display: block;
+}
+
+.month {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.news-content {
+    position: relative;
+}
+
+.bbWrapper {
+    position: relative;
+
+}
+
+.news-author {
+    text-align: end;
+    margin: 0;
+    color: #F1F1F1;
+}
+
+.news-author span {
+    font-style: italic;
+}
+
+.info-list {
+    position: relative;
+
+}
+
+.server {
+    position: relative;
+
+}
+
+.server:hover {
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+.server-img {
+    position: absolute;
+
+}
+
+.name {
+    position: absolute;
+
+}
+
+.desc {
+    position: absolute;
+
+}
+
+.green {
+    color: #1AC707;
+}
+
+.red {
+    color: #FF0409;
+}
+
+.etat-text {
+    position: absolute;
+
+}
+
+.text {
+    position: absolute;
+
+}
+
+.online {
+    position: absolute;
+    top: -6px;
+    left: 41px;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    border: 2px solid #1A1A1A;
+    transition: all .2s;
+    background-color: #1AC707;
+}
+
+.online.off {
+    background-color: #FF0409;
+}
