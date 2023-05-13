@@ -5,7 +5,7 @@
     "description": "Launcher Mincraft",
     "main": "src/app.js",
     "author": "Sterwim",
-    "url": "http://craftdium.ml/launcherSelvania",
+    "url": "YOUR_URL",
     "engines": {
         "node": "^18.x.x"
     },
