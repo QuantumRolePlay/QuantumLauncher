@@ -1,7 +1,7 @@
 {
     "name": "Quantum",
     "preductname": "Quantum",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Launcher Mincraft",
     "main": "src/app.js",
     "author": "Sterwim",
@@ -34,6 +34,6 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://${{ env.GITHUB_TOKEN }}@github.com/QuantumRolePlay/QuantumLauncher.git"
+        "url": "https://github.com/QuantumRolePlay/QuantumLauncher.git"
     }
 }
