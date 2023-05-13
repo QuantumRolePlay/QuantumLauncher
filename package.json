@@ -1,7 +1,7 @@
 {
     "name": "Quantum",
     "preductname": "Quantum",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Launcher Mincraft",
     "main": "src/app.js",
     "author": "Sterwim",
