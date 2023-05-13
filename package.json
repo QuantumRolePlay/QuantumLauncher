@@ -1,0 +1,39 @@
+{
+    "name": "Quantum",
+    "preductname": "Quantum",
+    "version": "1.0.0",
+    "description": "Launcher Mincraft",
+    "main": "src/app.js",
+    "author": "Sterwim",
+    "url": "http://craftdium.ml/launcherSelvania",
+    "engines": {
+        "node": "^18.x.x"
+    },
+    "scripts": {
+        "start": "cross-env-shell NODE_ENV=dev electron .",
+        "build": "node build.js --obf=true",
+        "dev": "nodemon --exec npm start"
+    },
+    "license": "CC0",
+    "nodemonConfig": {
+        "ext": "js,html,css"
+    },
+    "dependencies": {
+        "electron-updater": "^5.0.1",
+        "minecraft-java-core": "^3.4.3",
+        "node-fetch": "^2.6.7",
+        "os": "^0.1.2",
+        "request": "^2.88.2"
+    },
+    "devDependencies": {
+        "cross-env": "^7.0.3",
+        "electron": "^20.0.0",
+        "electron-builder": "^23.0.3",
+        "javascript-obfuscator": "^4.0.2",
+        "nodemon": "^2.0.16"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://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.github.com/QuantumRolePlay/QuantumLauncher.git"
+    }
+}
