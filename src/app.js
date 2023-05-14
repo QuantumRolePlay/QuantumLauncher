@@ -1,6 +1,7 @@
-const { app, ipcMain } = require('electron');
-const { Microsoft } = require('minecraft-java-core');
-const { autoUpdater } = require('electron-updater')
+const {app, ipcMain} = require('electron');
+const {Microsoft} = require('minecraft-java-core');
+const {autoUpdater} = require('electron-updater')
+
 
 const path = require('path');
 const fs = require('fs');
@@ -13,7 +14,7 @@ let dev = process.env.NODE_ENV === 'dev';
 
 if (dev) {
     let appPath = path.resolve('./AppData/Launcher').replace(/\\/g, '/');
-    if (!fs.existsSync(appPath)) fs.mkdirSync(appPath, { recursive: true });
+    if (!fs.existsSync(appPath)) fs.mkdirSync(appPath, {recursive: true});
     app.setPath('userData', appPath);
 }
 
@@ -47,7 +48,7 @@ ipcMain.on('main-window-maximize', () => {
 ipcMain.on('main-window-hide', () => MainWindow.getWindow().hide())
 ipcMain.on('main-window-show', () => MainWindow.getWindow().show())
 
-ipcMain.handle('Microsoft-window', async(event, client_id) => {
+ipcMain.handle('Microsoft-window', async (event, client_id) => {
     return await new Microsoft(client_id).getAuth();
 })
 
@@ -59,7 +60,7 @@ app.on('window-all-closed', () => {
 autoUpdater.autoDownload = false;
 
 ipcMain.handle('update-app', () => {
-    return new Promise(async(resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         autoUpdater.checkForUpdates().then(() => {
             resolve();
         }).catch(error => {

@@ -3,6 +3,8 @@ const electron = require("electron");
 const path = require("path");
 const os = require("os");
 let updateWindow = undefined;
+let dev = process.env.NODE_ENV === 'dev';
+
 
 function getWindow() {
     return updateWindow;
@@ -18,8 +20,10 @@ function createWindow() {
     destroyWindow();
     updateWindow = new electron.BrowserWindow({
         title: "Mise à jour",
-        width: 400,
-        height: 500,
+        width: 510,
+        height: 810,
+        minWidth: 510,
+        minHeight: 810,
         resizable: false,
         icon: `./src/assets/images/icon.${os.platform() === "win32" ? "ico" : "png"}`,
         transparent: os.platform() === 'win32',
@@ -27,13 +31,13 @@ function createWindow() {
         show: false,
         webPreferences: {
             contextIsolation: false,
-            nodeIntegration: true,
-            devTools: false
+            nodeIntegration: true
         },
     });
     electron.Menu.setApplicationMenu(null);
     updateWindow.setMenuBarVisibility(false);
     updateWindow.loadFile(path.join(electron.app.getAppPath(), 'src', 'index.html'));
+    if(dev) updateWindow.webContents.openDevTools()
     updateWindow.once('ready-to-show', () => {
         if (updateWindow) {
             updateWindow.show();

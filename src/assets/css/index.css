@@ -13,6 +13,7 @@ img {
 }
 
 .splash {
+    background-color: red;
     position: absolute;
     top: 180px;
     left: 50%;

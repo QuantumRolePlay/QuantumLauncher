@@ -1,11 +1,11 @@
 const builder = require('electron-builder')
-const { preductname } = require('./package.json')
+const { productName } = require('./package.json')
 
 builder.build({
     config: {
         generateUpdatesFilesForAllChannels: false,
-        appId: preductname,
-        productName: preductname,
+        appId: productName,
+        productName: productName,
         artifactName: "${productName}-${os}-${arch}.${ext}",
         files: ["src/**/*", "package.json"],
         directories: { "output": "dist" },

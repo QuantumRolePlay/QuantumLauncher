@@ -5,6 +5,8 @@ const os = require("os");
 const request = require('request');
 const pkg = require("../../package.json");
 let mainWindow = undefined;
+let dev = process.env.NODE_ENV === 'dev';
+
 
 function getWindow() {
     return mainWindow;
@@ -19,25 +21,25 @@ function destroyWindow() {
 function createWindow() {
     destroyWindow();
     mainWindow = new electron.BrowserWindow({
-        title: pkg.preductname,
-        width: 1280,
-        height: 720,
-        minWidth: 980,
-        minHeight: 552,
-        resizable: true,
+        title: pkg.productName,
+        width: 510,
+        height: 810,
+        minWidth: 510,
+        minHeight: 810,
+        resizable: false,
         icon: `./src/assets/images/icon.${os.platform() === "win32" ? "ico" : "png"}`,
         transparent: os.platform() === 'win32',
         frame: os.platform() !== 'win32',
         show: false,
         webPreferences: {
             contextIsolation: false,
-            nodeIntegration: true,
-            devTools: false
+            nodeIntegration: true
         },
     });
     electron.Menu.setApplicationMenu(null);
     mainWindow.setMenuBarVisibility(false);
     mainWindow.loadFile(path.join(electron.app.getAppPath(), 'src', 'launcher.html'));
+    if(dev) mainWindow.webContents.openDevTools()
     mainWindow.once('ready-to-show', () => {
         if (mainWindow) {
             mainWindow.show();

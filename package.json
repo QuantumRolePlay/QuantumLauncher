@@ -1,8 +1,8 @@
 {
-    "name": "Quantum",
-    "preductname": "Quantum",
+    "name": "quantum",
+    "productName": "QuantumRP Launcher",
     "version": "1.0.4",
-    "description": "Launcher Mincraft",
+    "description": "Launcher Minecraft",
     "main": "src/app.js",
     "author": "Sterwim",
     "url": "https://launcher.quantum-network.fr",
@@ -29,6 +29,7 @@
         "cross-env": "^7.0.3",
         "electron": "^20.0.0",
         "electron-builder": "^23.0.3",
+        "electron-reloader": "^1.2.3",
         "javascript-obfuscator": "^4.0.2",
         "nodemon": "^2.0.16"
     },
