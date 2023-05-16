@@ -1,6 +1,6 @@
 'use strict';
-const { ipcRenderer } = require('electron');
-import { config } from './utils.js';
+const {ipcRenderer} = require('electron');
+import {config} from './utils.js';
 
 let dev = process.env.NODE_ENV === 'dev';
 
@@ -15,9 +15,7 @@ class Splash {
 
     async startAnimation() {
         await sleep(100);
-        document.querySelector("#splash").style.display = "block";
-        await sleep(500);
-        this.splash.classList.add("opacity");
+        document.querySelector("#splash").style.display = "flex";
         await sleep(500);
         this.splash.classList.add("translate");
         this.message.classList.add("opacity");
@@ -27,12 +25,12 @@ class Splash {
 
     async checkUpdate() {
         if (dev) return this.startLauncher();
-        this.setStatus(`recherche de mise à jour...`);
+        this.setStatus(`Recherche de mise à jour...`);
 
         ipcRenderer.invoke('update-app').then(err => {
             if (err.error) {
                 let error = err.message;
-                this.shutdown(`erreur lors de la recherche de mise à jour !`);
+                this.shutdown(`Erreur lors de la recherche de mise à jour !\n` + error);
             }
         })
 

@@ -33,21 +33,8 @@ class Launcher {
 
     initFrame() {
         console.log("Initializing Frame...")
-        document.querySelector(".frame").classList.toggle("hide")
-        document.querySelector(".dragbar").classList.toggle("hide")
-
         document.querySelector("#minimize").addEventListener("click", () => {
             ipcRenderer.send("main-window-minimize");
-        });
-
-        let maximized = false;
-        let maximize = document.querySelector("#maximize")
-        maximize.addEventListener("click", () => {
-            if (maximized) ipcRenderer.send("main-window-maximize")
-            else ipcRenderer.send("main-window-maximize");
-            maximized = !maximized
-            maximize.classList.toggle("icon-maximize")
-            maximize.classList.toggle("icon-restore-down")
         });
 
         document.querySelector("#close").addEventListener("click", () => {
@@ -181,7 +168,7 @@ class Launcher {
             }
             changePanel("home");
         }
-        document.querySelector(".preload-content").style.display = "none";
+       document.querySelector(".preload-content").style.display = "none";
     }
 }
 

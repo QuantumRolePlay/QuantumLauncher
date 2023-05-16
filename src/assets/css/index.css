@@ -1,10 +1,14 @@
 @import "font.css";
+
+@import "root.css";
+
 body {
-    background-color: #000000;
+    background-color: var(--bg);
     font-family: "Poppins";
     letter-spacing: 0px;
     -webkit-app-region: drag;
     user-select: none;
+    overflow: hidden;
 }
 
 img {
@@ -12,36 +16,36 @@ img {
     user-select: none;
 }
 
-.splash {
-    background-color: red;
-    position: absolute;
-    top: 180px;
-    left: 50%;
-    transform: translate(-50%);
-    width: 140px;
-    height: 140px;
-    transition: opacity .3s, top 1.5s;
-    opacity: 0;
+#splash {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.splash.opacity {
-    opacity: 1;
+.splash {
+    width: 40vw;
+    height: 40vw;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(-50px);
 }
 
 .splash.translate {
-    top: 129px;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .message {
-    position: absolute;
-    top: 347px;
-    left: 0px;
-    width: 400px;
+    width: fit-content;
     text-align: center;
     transition: opacity 1.5s;
-    font: normal normal bold 18px/27px Poppins;
-    color: rgb(255, 255, 255);
+    color: #fff;
     opacity: 0;
+    font: normal normal bold 18px/27px Poppins;
+    font-size: 5vw;
 }
 
 .message.opacity {
@@ -49,10 +53,7 @@ img {
 }
 
 progress {
-    position: absolute;
-    top: 410px;
-    left: 106px;
-    width: 189px;
+    width: 80%;
     height: 10px;
     appearance: none;
     transition: opacity .2s;
@@ -64,11 +65,11 @@ progress.show {
 }
 
 progress::-webkit-progress-bar {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--bg-third);
     border-radius: 10px;
 }
 
 progress::-webkit-progress-value {
-    background-color: rgb(255, 0, 0);
+    background-color: var(--primary);
     border-radius: 10px;
 }

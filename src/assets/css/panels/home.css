@@ -1,81 +1,19 @@
-.bottom-bar-home {
-    position: fixed;
-
-}
-
-.player-head {
-    margin: auto 30px;
-    background-image: url("../../images/default/steve.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-}
-
-.player-head:hover {
-    border-radius: 5px;
-}
-
-.settings-btn {
-    position: absolute;
-
-}
-
-.settings-btn:hover {
-    border-radius: 5px;
-
-}
-
-.icon-settings:before {
-    font-size: 40px;
-}
-
-.play-element {
-    position: absolute;
-
-}
-
-.play-btn {
-    top: 10px;
-    width: 160px;
-    height: 37px;
-    border-radius: 20px;
-    border: none;
-
-}
-
-.download-content {
-    position: absolute;
-
-}
-
-.text-download,
-.progress-bar {
-    display: none;
-}
-
-.text-download {
-    font-size: 15px;
-}
-
-.progress-bar {
-    background-color: transparent;
-    height: 10px;
-}
-
-.progress-bar::-webkit-progress-bar {
-    background-color: #797979;
-    border-radius: 10px;
-}
-
-.progress-bar::-webkit-progress-value {
-    background-color: #00bd7a;
-    border-radius: 10px;
+.home-content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .body-home {
+    width: 100%;
+    height: 60%;
+    background-color: #00bd7a;
     display: flex;
-
 }
 
 .news-list {
@@ -209,4 +147,112 @@
 
 .online.off {
     background-color: #FF0409;
+}
+
+.play-content {
+    position: relative;
+    background-color: rebeccapurple;
+}
+
+.play-content .play-btn {
+    width: 54vw;
+    height: 8vh;
+    border-radius: 20px;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 59px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.download-content {
+    display: none;
+}
+
+.download-content.active {
+    position: absolute;
+    width: 100%;
+    height: 7vh;
+    background-color: aqua;
+}
+
+.download-content.active .text-download,
+.download-content.active .progress-bar {
+    display: none;
+}
+
+.text-download {
+    font-size: 15px;
+}
+
+.progress-bar {
+    background-color: transparent;
+    height: 10px;
+}
+
+.progress-bar::-webkit-progress-bar {
+    background-color: #797979;
+    border-radius: 10px;
+}
+
+.progress-bar::-webkit-progress-value {
+    background-color: #00bd7a;
+    border-radius: 10px;
+}
+
+
+.navigation-menu {
+    width: 100%;
+    height: 10vh;
+    /*background-color: orange;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navigation-menu .links-content,
+.navigation-menu .buttons-content {
+    height: 100%;
+    /*background-color: aqua;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.navigation-menu button {
+    width: 10vh;
+    height: 10vh;
+    background-color: var(--bg-second);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.navigation-menu button:hover {
+    transform: scale(1.05);
+}
+
+.navigation-menu button img {
+    transform: scale(0.6);
+    transition: all 0.3s ease;
+}
+
+.navigation-menu button:hover img {
+    transform: scale(0.7);
+}
+
+.navigation-menu button.account {
+    background-image: url("../../images/default/steve.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }

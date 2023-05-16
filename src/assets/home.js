@@ -91,7 +91,8 @@ class Home {
             let launcherSettings = (await this.database.get('1234', 'launcher')).value;
 
             let playBtn = document.querySelector('.play-btn');
-            let info = document.querySelector(".text-download")
+            let infoText = document.querySelector(".play-btn")
+            let progressContainer = document.querySelector(".download-content")
             let progressBar = document.querySelector(".progress-bar")
 
             if (Resolution.screen.width == '<auto>') {
@@ -129,8 +130,8 @@ class Home {
                 }
             }
 
-            playBtn.style.display = "none"
-            info.style.display = "block"
+            playBtn.classList.add("loading")
+            progressContainer.classList.add("active")
             launch.Launch(opts);
 
             launch.on('extract', extract => {
@@ -138,16 +139,16 @@ class Home {
             });
 
             launch.on('progress', (progress, size) => {
-                progressBar.style.display = "block"
-                document.querySelector(".text-download").innerHTML = `Téléchargement ${((progress / size) * 100).toFixed(0)}%`
+                //progressBar.style.display = "block"
+                infoText.innerHTML = `Téléchargement ${((progress / size) * 100).toFixed(0)}%`
                 ipcRenderer.send('main-window-progress', { progress, size })
                 progressBar.value = progress;
                 progressBar.max = size;
             });
 
             launch.on('check', (progress, size) => {
-                progressBar.style.display = "block"
-                document.querySelector(".text-download").innerHTML = `Vérification ${((progress / size) * 100).toFixed(0)}%`
+                //progressBar.style.display = "block"
+                infoText.innerHTML = `Vérification ${((progress / size) * 100).toFixed(0)}%`
                 progressBar.value = progress;
                 progressBar.max = size;
             });
@@ -165,24 +166,23 @@ class Home {
 
             launch.on('patch', patch => {
                 console.log(patch);
-                info.innerHTML = `Patch en cours...`
+                infoText.innerHTML = `Patch en cours...`
             });
 
             launch.on('data', (e) => {
                 new logger('Minecraft', '#36b030');
                 if (launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-hide");
                 ipcRenderer.send('main-window-progress-reset')
-                progressBar.style.display = "none"
-                info.innerHTML = `Demarrage en cours...`
+                //progressBar.style.display = "none"
+                infoText.innerHTML = `Démarrage en cours...`
                 console.log(e);
             })
 
             launch.on('close', code => {
                 if (launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-show");
-                progressBar.style.display = "none"
-                info.style.display = "none"
-                playBtn.style.display = "block"
-                info.innerHTML = `Vérification`
+                progressContainer.classList.remove("active")
+                playBtn.classList.remove("loading")
+                infoText.innerHTML = `Vérification`
                 new logger('Launcher', '#7289da');
                 console.log('Close');
             });
@@ -212,8 +212,14 @@ class Home {
     }
 
     initBtn() {
-        document.querySelector('.settings-btn').addEventListener('click', () => {
+        document.querySelector('.settings').addEventListener('click', () => {
             changePanel('settings');
+        });
+        document.querySelector('.website').addEventListener('click', () => {
+            window.open(pkg.publicLinks.webSite, "__blank");
+        });
+        document.querySelector('.discord').addEventListener('click', () => {
+            window.open(pkg.publicLinks.discordInviteURL, "__blank")
         });
     }
 

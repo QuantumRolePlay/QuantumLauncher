@@ -1,0 +1,16 @@
+:root {
+    --bg: #181818;
+    --bg-second: #373737;
+    --bg-third: #ABABAB;
+    --primary: #EF233C;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    background-color: var(--bg);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}

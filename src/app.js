@@ -1,11 +1,38 @@
 const {app, ipcMain} = require('electron');
 const {Microsoft} = require('minecraft-java-core');
 const {autoUpdater} = require('electron-updater')
-
+try {
+    require('electron-reloader')(module, {ignore: ["AppData/*"],watchRenderer: true, debug: true})
+} catch (_) {
+}
 
 const path = require('path');
 const fs = require('fs');
+//discord integration
+const DiscordRPC = require('discord-rpc');
+const clientId = '1107396478185509005';
+const rpc = new DiscordRPC.Client({transport: 'ipc'});
+const startTimestamp = new Date();
+const pkg = require('../package.json')
 
+rpc.on('ready', () => {
+
+    rpc.setActivity({
+        details: 'En train de jouer à QuantumRP',
+        state: '2e Sub',
+        startTimestamp,
+        largeImageKey: 'logo',
+        largeImageText: 'QuantumRP',
+        smallImageKey: 'logo-mc',
+        smallImageText: 'Sur Minecraft',
+        buttons: [
+            {label: 'Site web', url: pkg.publicLinks.webSite}
+        ]
+    }).then(() => console.log('Discord RPC créé')).catch(err => console.error(err))
+});
+
+rpc.login({clientId}).catch(console.error);
+//
 const UpdateWindow = require("./assets/updateWindow.js");
 const MainWindow = require("./assets/mainWindow.js");
 
@@ -37,13 +64,6 @@ ipcMain.on('main-window-progress', (event, options) => MainWindow.getWindow().se
 ipcMain.on('main-window-progress-reset', () => MainWindow.getWindow().setProgressBar(0))
 ipcMain.on('main-window-minimize', () => MainWindow.getWindow().minimize())
 
-ipcMain.on('main-window-maximize', () => {
-    if (MainWindow.getWindow().isMaximized()) {
-        MainWindow.getWindow().unmaximize();
-    } else {
-        MainWindow.getWindow().maximize();
-    }
-})
 
 ipcMain.on('main-window-hide', () => MainWindow.getWindow().hide())
 ipcMain.on('main-window-show', () => MainWindow.getWindow().show())

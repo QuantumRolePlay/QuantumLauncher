@@ -1,5 +1,7 @@
-/* Poppins */
+/*Roboto*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
+/* Poppins */
 @font-face {
     font-family: 'Poppins';
     font-style: normal;
@@ -25,6 +27,7 @@
     font-style: normal;
 }
 
+
 [class^="icon-"]:before, [class*=" icon-"]:before, [class^="icon-"]:after, [class*=" icon-"]:after, .select-wrap:after {
     font-style: normal;
     font-weight: normal;
@@ -38,11 +41,40 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.icon-close:before { font-family: "Icons"; content: "\e90e"; }
-.icon-minimize:before { font-family: "Icons"; content: "\e90b"; }
-.icon-maximize:before { font-family: "Icons"; content: "\e90c"; }
-.icon-restore-down:before { font-family: "Icons"; content: "\e90d"; }
-.icon-account-add:before { font-family: "Icons"; content: "\e901"; }
-.icon-account-delete:before { font-family: "Icons"; content: "\e902"; }
-.icon-settings:before { font-family: "Icons"; content: "\e909"; }
-.icon-monitor:before { font-family: "Icons"; content: "\e90a"; }
+.icon-close:before {
+    font-family: "Icons";
+    content: "\e90e";
+    color: #fff;
+}
+
+.icon-minimize:before {
+    font-family: "Icons";
+    content: "\e90b";
+    color: #fff;
+}
+
+.icon-restore-down:before {
+    font-family: "Icons";
+    content: "\e90d";
+    color: #fff;
+}
+
+.icon-account-add:before {
+    font-family: "Icons";
+    content: "\e901";
+    color: #fff;
+}
+
+.icon-account-delete:before {
+    font-family: "Icons";
+    content: "\e902";
+    color: #fff;
+}
+
+.icon-monitor:before {
+    font-family: "Icons";
+    content: "\e90a";
+    color: #fff;
+}
+
+
