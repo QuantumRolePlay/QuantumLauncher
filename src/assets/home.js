@@ -1,9 +1,9 @@
 'use strict';
 
-import { logger, database, changePanel } from './utils.js';
+import {changePanel, database, logger} from './utils.js';
 
-const { Launch, Status } = require('minecraft-java-core');
-const { ipcRenderer } = require('electron');
+const {Launch, Status} = require('minecraft-java-core');
+const {ipcRenderer} = require('electron');
 const launch = new Launch();
 const pkg = require('../package.json');
 
@@ -11,6 +11,7 @@ const dataDirectory = process.env.APPDATA || (process.platform == 'darwin' ? `${
 
 class Home {
     static id = "home";
+
     async init(config, news) {
         this.config = config
         this.news = await news
@@ -91,9 +92,9 @@ class Home {
             let launcherSettings = (await this.database.get('1234', 'launcher')).value;
 
             let playBtn = document.querySelector('.play-btn');
-            let infoText = document.querySelector(".play-btn")
-            let progressContainer = document.querySelector(".download-content")
             let progressBar = document.querySelector(".progress-bar")
+
+            playBtn.innerHTML = "Loading...";
 
             if (Resolution.screen.width == '<auto>') {
                 screen = false
@@ -131,7 +132,7 @@ class Home {
             }
 
             playBtn.classList.add("loading")
-            progressContainer.classList.add("active")
+
             launch.Launch(opts);
 
             launch.on('extract', extract => {
@@ -140,17 +141,19 @@ class Home {
 
             launch.on('progress', (progress, size) => {
                 //progressBar.style.display = "block"
-                infoText.innerHTML = `Téléchargement ${((progress / size) * 100).toFixed(0)}%`
-                ipcRenderer.send('main-window-progress', { progress, size })
+                playBtn.innerHTML = `Téléchargement ${((progress / size) * 100).toFixed(0)}%`
+                ipcRenderer.send('main-window-progress', {progress, size})
                 progressBar.value = progress;
                 progressBar.max = size;
+                progressBar.classList.add('active')
             });
 
             launch.on('check', (progress, size) => {
                 //progressBar.style.display = "block"
-                infoText.innerHTML = `Vérification ${((progress / size) * 100).toFixed(0)}%`
+                playBtn.innerHTML = `Vérification ${((progress / size) * 100).toFixed(0)}%`
                 progressBar.value = progress;
                 progressBar.max = size;
+                progressBar.classList.add('active')
             });
 
             launch.on('estimated', (time) => {
@@ -166,7 +169,7 @@ class Home {
 
             launch.on('patch', patch => {
                 console.log(patch);
-                infoText.innerHTML = `Patch en cours...`
+                playBtn.innerHTML = `Patch en cours...`
             });
 
             launch.on('data', (e) => {
@@ -174,15 +177,15 @@ class Home {
                 if (launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-hide");
                 ipcRenderer.send('main-window-progress-reset')
                 //progressBar.style.display = "none"
-                infoText.innerHTML = `Démarrage en cours...`
+                playBtn.innerHTML = `Démarrage en cours...`
                 console.log(e);
             })
 
             launch.on('close', code => {
                 if (launcherSettings.launcher.close === 'close-launcher') ipcRenderer.send("main-window-show");
-                progressContainer.classList.remove("active")
+                playBtn.innerHTML = `Vérification`
                 playBtn.classList.remove("loading")
-                infoText.innerHTML = `Vérification`
+                progressBar.classList.remove("active")
                 new logger('Launcher', '#7289da');
                 console.log('Close');
             });
@@ -196,14 +199,12 @@ class Home {
     async initStatusServer() {
         let nameServer = document.querySelector('.server-text .name');
         let serverMs = document.querySelector('.server-text .desc');
-        let playersConnected = document.querySelector('.etat-text .text');
-        let online = document.querySelector(".etat-text .online");
+        let playersConnected = document.querySelector('.state-text .player-count');
         let serverPing = await new Status(this.config.status.ip, this.config.status.port).getStatus();
 
         if (!serverPing.error) {
             nameServer.textContent = this.config.status.nameServer;
-            serverMs.innerHTML = `<span class="green">En ligne</span> - ${serverPing.ms}ms`;
-            online.classList.toggle("off");
+            serverMs.innerHTML = `<span style="color: palegreen">En ligne</span> - ${serverPing.ms}ms`;
             playersConnected.textContent = serverPing.playersConnect;
         } else if (serverPing.error) {
             nameServer.textContent = 'Serveur indisponible';
@@ -229,7 +230,8 @@ class Home {
         let month = date.getMonth() + 1
         let day = date.getDate()
         let allMonth = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
-        return { year: year, month: allMonth[month - 1], day: day }
+        return {year: year, month: allMonth[month - 1], day: day}
     }
 }
+
 export default Home;
