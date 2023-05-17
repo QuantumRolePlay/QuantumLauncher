@@ -1,5 +1,5 @@
 <div class="settings-content">
-    <div class="tabs-settings-btn">
+    <!--<div class="tabs-settings-btn">
         <button class="tab-btn-css tab-btn active-tab-btn default-tab-btn">Comptes</button>
         <button class="tab-btn-css tab-btn">Java</button>
         <button class="tab-btn-css tab-btn">Launcher</button>
@@ -55,6 +55,50 @@
                     <input type="checkbox" class="checkbox-settings" id="launcher-close"><label for="launcher-close"><div class="checkround"></div></label> Fermer le launcher après le lancement du jeu.</br>
                     <input type="checkbox" class="checkbox-settings" id="launcher-close-all"><label for="launcher-close-all"><div class="checkround"></div></label> Fermer le jeu si le launcher est fermé.</br>
                     <input type="checkbox" class="checkbox-settings" id="launcher-open"><label for="launcher-open"><div class="checkround"></div></label> Garder le launcher ouvert après le lancement du jeu.
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="exit"><img src="assets/images/logo/arrow.svg"></div>
+    <div class="parameter account">
+        <div class="content accounts">
+        </div>
+    </div>
+    <div class="parameter ram">
+        <img src="assets/images/logo/ram.svg">
+        <div class="content">
+            <p class="title">Ram</p>
+            <div class="selectable">
+                <input class="memory-slider" type="range" max="1" value="0.2">
+                <p id="free-ram"></p>
+            </div>
+        </div>
+    </div>
+    <div class="parameter java">
+        <img src="assets/images/logo/java.svg">
+        <div class="content">
+            <p class="title">Executable Java</p>
+            <p class="info-path"></p>
+            <input class="path" type="text">
+            <div class="selectable">
+                <button class="path-button">Set</button>
+                <button class="path-button-reset">Rest</button>
+            </div>
+        </div>
+    </div>
+    <div class="parameter resolution">
+        <img src="assets/images/logo/screen.svg">
+        <div class="content">
+            <p class="title">Résolution</p>
+            <div class="selectable">
+                <div>
+                    <input type="number">
+                    <p>X</p>
+                    <input type="number">
+                </div>
+                <div>
+                    <input type="checkbox">
+                    <p>Fullscreen</p>
                 </div>
             </div>
         </div>

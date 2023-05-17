@@ -11,28 +11,39 @@ export {
     addAccount as addAccount,
     slider as Slider,
     accountSelect as accountSelect
+
 }
 
 function changePanel(id) {
-    let panel = document.querySelector(`.${id}`);
+    let panel = document.querySelector(`.panel.${id}`);
     let active = document.querySelector(`.active`)
     if (active) active.classList.toggle("active");
     panel.classList.add("active");
 }
 
+/**
+ * @Depreciated
+ * @param data
+ */
 function addAccount(data) {
     let div = document.createElement("div");
     div.classList.add("account");
     div.id = data.uuid;
     div.innerHTML = `
         <img class="account-image" src="https://minotar.net/helm/${data.name}/100">
-        <div class="account-name">${data.name}</div>
-        <div class="account-uuid">${data.uuid}</div>
-        <div class="account-delete"><div class="icon-account-delete icon-account-delete-btn"></div></div>
+        <div class="account-data">
+        <p style="font-weight: 600" class="account-name">${data.name}</p>
+        <p class="account-uuid">${data.uuid}</p>
+        </div>
+        <!--<div class="account-delete"><div class="icon-account-delete icon-account-delete-btn"></div></div>-->
     `
     document.querySelector('.accounts').appendChild(div);
 }
 
+/**
+ * @Depreciated
+ * @param uuid
+ */
 function accountSelect(uuid) {
     let account = document.getElementById(uuid);
     let pseudo = account.querySelector('.account-name').innerText;

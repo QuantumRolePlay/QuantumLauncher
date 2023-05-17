@@ -21,8 +21,9 @@
 
 .news-list {
     width: 100%;
-    height: 50%;
-    background-color: aqua;
+    height: 70%;
+    background-color: var(--bg-second);
+    border-radius: 20px;
 }
 
 .news-list::-webkit-scrollbar {
@@ -128,6 +129,10 @@
     transition: all 0.3s ease;
 }
 
+.play-content .play-btn:hover {
+    transform: scale(1.1);
+}
+
 .play-content .play-btn.loading {
     font-size: 7vw;
 }
@@ -142,6 +147,7 @@
 .progress-bar.active {
     width: 100%;
 }
+
 
 .progress-bar::-webkit-progress-bar {
     background-color: var(--bg-second);
