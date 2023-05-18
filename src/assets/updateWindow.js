@@ -39,7 +39,7 @@ function createWindow() {
     updateWindow.loadFile(path.join(electron.app.getAppPath(), 'src', 'index.html'));
     updateWindow.once('ready-to-show', () => {
         if (updateWindow) {
-            updateWindow.webContents.openDevTools()
+            if (dev) updateWindow.webContents.openDevTools()
             updateWindow.show();
         }
     });
