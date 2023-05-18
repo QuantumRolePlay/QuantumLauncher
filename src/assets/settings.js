@@ -12,7 +12,7 @@ class Settings {
     async init(config) {
         this.config = config;
         this.database = await new database().init();
-        document.querySelector('.exit').addEventListener("click", ()=>changePanel("home"))
+        document.querySelector('.exit').addEventListener("click", () => changePanel("home"))
         this.initSettingsDefault();
         //this.initAccount();
         this.initRam();
@@ -63,7 +63,6 @@ class Settings {
         let freeMem = Math.trunc(os.freemem() / 1073741824 * 10) / 10;
 
         //document.getElementById("total-ram").textContent = `${totalMem} Go`;
-        document.getElementById("free-ram").textContent = `${freeMem} Go`;
 
         let sliderDiv = document.querySelector(".memory-slider");
         sliderDiv.setAttribute("max", Math.trunc((80 * totalMem) / 100));
@@ -71,6 +70,7 @@ class Settings {
         let ram = ramDatabase ? ramDatabase : {ramMin: "1", ramMax: "2"};
         sliderDiv.setAttribute("min", parseFloat(ram.ramMin))
         sliderDiv.setAttribute("value", parseFloat(ram.ramMax))
+        document.getElementById("free-ram").textContent = `${ram.ramMax}Go`;
 
         //let slider = new Slider(".memory-slider", parseFloat(ram.ramMin), parseFloat(ram.ramMax));
 
@@ -82,6 +82,7 @@ class Settings {
 
         sliderDiv.addEventListener("input", (e) => {
             this.database.update({uuid: "1234", ramMin: `1`, ramMax: `${sliderDiv.value}`}, 'ram')
+            document.getElementById("free-ram").textContent = sliderDiv.value + "GO";
         })
         /*slider.on("change", (min, max) => {
             minSpan.setAttribute("value", `${min} Go`);
@@ -152,13 +153,13 @@ class Settings {
 
         let width = document.querySelector("#res-X");
         width.value = resolution.width;
-        width.addEventListener('input', ()=>{
+        width.addEventListener('input', () => {
             this.database.update({uuid: "1234", screen: {width: width.value, height: resolution.height}}, 'screen');
         })
 
         let height = document.querySelector("#res-Y");
         height.value = resolution.height;
-        height.addEventListener('input', ()=>{
+        height.addEventListener('input', () => {
             this.database.update({uuid: "1234", screen: {width: resolution.width, height: height.value}}, 'screen');
         })
 
