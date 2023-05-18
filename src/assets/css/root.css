@@ -14,3 +14,12 @@ body {
     width: 100vw;
     height: 100vh;
 }
+
+
+p {
+    font-family: Poppins;
+    font-size: 3vh;
+    color: #fff;
+    margin: 0;
+    font-weight: normal;
+}

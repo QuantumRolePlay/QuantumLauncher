@@ -15,8 +15,8 @@
     position: absolute;
     left: 2vw;
     bottom: 2vh;
-    width: 15vw;
-    height: 15vw;
+    width: 5vw;
+    height: 5vw;
     background-color: var(--bg-second);
     border-radius: 10px;
     cursor: pointer;
@@ -29,7 +29,7 @@
 }
 
 .settings-content .parameter {
-    width: 100%;
+    width: 70%;
     height: 15vh;
     background-color: var(--bg-second);
     border-radius: 20px;
