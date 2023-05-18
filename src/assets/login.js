@@ -18,8 +18,7 @@ class Login {
         console.log(`Initializing microsoft Panel...`)
         this.loginMicrosoft();
         document.querySelector('.cancel-login').addEventListener("click", () => {
-            document.querySelector(".cancel-login").style.display = "none";
-            changePanel("settings");
+            changePanel("home");
         })
     }
 
@@ -28,8 +27,7 @@ class Login {
         console.log(`Initializing offline Panel...`)
         this.loginMicrosoft();
         document.querySelector('.cancel-login').addEventListener("click", () => {
-            document.querySelector(".cancel-login").style.display = "none";
-            changePanel("settings");
+            changePanel("home");
         })
     }
 

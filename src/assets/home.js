@@ -222,6 +222,9 @@ class Home {
         document.querySelector('.discord').addEventListener('click', () => {
             window.open(pkg.publicLinks.discordInviteURL, "__blank")
         });
+        document.querySelector(".logout").addEventListener("click", ()=>{
+            changePanel("login")
+        })
     }
 
     async getdate(e) {

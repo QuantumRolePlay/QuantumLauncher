@@ -124,11 +124,28 @@ img {
     text-align: center;
     margin: 2em 0;
 }
-
-.panels {
+#mainContainer {
     width: 100%;
     height: calc(100% - 26px);
     margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+}
+#mainImage {
+    width: 100%;
+    height: 15vh;
+    background-image: url("../images/logo/Quantum_txt.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.panels {
+    width: 100%;
+    height: 100%;
+    flex: 1;
 }
 
 .panel {

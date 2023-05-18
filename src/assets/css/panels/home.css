@@ -179,31 +179,62 @@
     gap: 15px;
 }
 
-.navigation-menu button {
+.navigation-menu button,
+.navigation-menu .account{
     width: 10vh;
     height: 10vh;
     background-color: var(--bg-second);
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.2s ease;
+    border: 0;
 }
 
-.navigation-menu button:hover {
+.navigation-menu button:hover,
+.navigation-menu .account:hover {
     transform: scale(1.05);
 }
 
-.navigation-menu button img {
+.navigation-menu button img,
+.navigation-menu .account img{
     transform: scale(0.6);
     transition: all 0.3s ease;
 }
 
-.navigation-menu button:hover img {
+.navigation-menu button:hover img,
+.navigation-menu .account:hover img{
     transform: scale(0.7);
 }
 
-.navigation-menu button.account {
+.navigation-menu .account {
     background-image: url("../../images/default/steve.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.navigation-menu .account .hover {
+    position: relative;
+    height: fit-content;
+    top: -80%;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-second);
+    padding: 10px 20px 10px 20px;
+    border-radius: 15px;
+}
+.navigation-menu .account .hover button {
+    background-color: var(--primary);
+    width: fit-content;
+    height: fit-content;
+    color: #fff;
+    padding: 2px 3px 2px 3px;
+    font-size: 2vh;
+    font-family: Poppins;
+    border-radius: 15px;
+}
+.navigation-menu .account .hover.active {
+    display: flex;
 }

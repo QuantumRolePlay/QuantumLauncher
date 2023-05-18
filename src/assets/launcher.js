@@ -166,7 +166,7 @@ class Launcher {
                 document.querySelector(".preload-content").style.display = "none";
                 return
             }
-            changePanel("settings");
+            changePanel("home");
         }
        document.querySelector(".preload-content").style.display = "none";
     }

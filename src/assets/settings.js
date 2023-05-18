@@ -16,7 +16,8 @@ class Settings {
         this.initSettingsDefault();
         //this.initAccount();
         this.initRam();
-        this.initJavaPath()
+        this.initResolution()
+        //this.initJavaPath()
         //this.initLauncherSettings();
     }
 
@@ -149,13 +150,20 @@ class Settings {
         let resolutionDatabase = (await this.database.get('1234', 'screen'))?.value?.screen;
         let resolution = resolutionDatabase ? resolutionDatabase : {width: "1280", height: "720"};
 
-        let width = document.querySelector(".width-size");
+        let width = document.querySelector("#res-X");
         width.value = resolution.width;
+        width.addEventListener('input', ()=>{
+            this.database.update({uuid: "1234", screen: {width: width.value, height: resolution.height}}, 'screen');
+        })
 
-        let height = document.querySelector(".height-size");
+        let height = document.querySelector("#res-Y");
         height.value = resolution.height;
+        height.addEventListener('input', ()=>{
+            this.database.update({uuid: "1234", screen: {width: resolution.width, height: height.value}}, 'screen');
+        })
 
-        let select = document.getElementById("select");
+
+        /*let select = document.getElementById("select");
         select.addEventListener("change", (event) => {
             let resolution = select.options[select.options.selectedIndex].value.split(" x ");
             select.options.selectedIndex = 0;
@@ -163,7 +171,7 @@ class Settings {
             width.value = resolution[0];
             height.value = resolution[1];
             this.database.update({uuid: "1234", screen: {width: resolution[0], height: resolution[1]}}, 'screen');
-        });
+        });*/
     }
 
     async initLauncherSettings() {
