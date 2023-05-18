@@ -2,10 +2,10 @@
 
 // libs 
 const fs = require('fs');
-const { Microsoft, Mojang } = require('minecraft-java-core');
-const { ipcRenderer } = require('electron');
+const {Microsoft, Mojang} = require('minecraft-java-core');
+const {ipcRenderer} = require('electron');
 
-import { config, logger, changePanel, database, addAccount, accountSelect } from './utils.js';
+import {accountSelect, addAccount, changePanel, config, database, logger} from './utils.js';
 import Login from './login.js';
 import Home from './home.js';
 import Settings from './settings.js';
@@ -72,7 +72,7 @@ class Launcher {
                     if (refresh.error) {
                         this.database.delete(account.uuid, 'accounts');
                         this.database.delete(account.uuid, 'profile');
-                        if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
+                        if (account.uuid === selectaccount) this.database.update({uuid: "1234"}, 'accounts-selected')
                         console.error(`[Account] ${account.uuid}: ${refresh.errorMessage}`);
                         continue;
                     }
@@ -103,7 +103,7 @@ class Launcher {
                     if (account.uuid === selectaccount) accountSelect(refresh.uuid)
                 } else if (account.meta.type === 'Mojang') {
                     if (account.meta.offline) {
-                    console.log(`Initializing Crack account ${account.name}...`);
+                        console.log(`Initializing Crack account ${account.name}...`);
                         addAccount(account);
                         if (account.uuid === selectaccount) accountSelect(account.uuid)
                         continue;
@@ -112,7 +112,7 @@ class Launcher {
                     let validate = await Mojang.validate(account);
                     if (!validate) {
                         this.database.delete(account.uuid, 'accounts');
-                        if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
+                        if (account.uuid === selectaccount) this.database.update({uuid: "1234"}, 'accounts-selected')
                         console.error(`[Account] ${account.uuid}: Token is invalid.`);
                         continue;
                     }
@@ -123,7 +123,7 @@ class Launcher {
 
                     if (refresh.error) {
                         this.database.delete(account.uuid, 'accounts');
-                        if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
+                        if (account.uuid === selectaccount) this.database.update({uuid: "1234"}, 'accounts-selected')
                         console.error(`[Account] ${account.uuid}: ${refresh.errorMessage}`);
                         continue;
                     }
@@ -145,18 +145,15 @@ class Launcher {
                     if (account.uuid === selectaccount) accountSelect(refresh.uuid)
                 } else {
                     this.database.delete(account.uuid, 'accounts');
-                    if (account.uuid === selectaccount) this.database.update({ uuid: "1234" }, 'accounts-selected')
+                    if (account.uuid === selectaccount) this.database.update({uuid: "1234"}, 'accounts-selected')
                 }
             }
 
 
-
-
-            
             if (!(await this.database.get('1234', 'accounts-selected')).value.selected) {
                 let uuid = (await this.database.getAll('accounts'))[0]?.value?.uuid
                 if (uuid) {
-                    this.database.update({ uuid: "1234", selected: uuid }, 'accounts-selected')
+                    this.database.update({uuid: "1234", selected: uuid}, 'accounts-selected')
                     accountSelect(uuid)
                 }
             }
@@ -168,7 +165,7 @@ class Launcher {
             }
             changePanel("home");
         }
-       document.querySelector(".preload-content").style.display = "none";
+        document.querySelector(".preload-content").style.display = "none";
     }
 }
 

@@ -18,7 +18,7 @@ class Home {
         this.database = await new database().init();
         this.initNews();
         this.initLaunch();
-        this.initStatusServer();
+        //this.initStatusServer();
         this.initBtn();
     }
 

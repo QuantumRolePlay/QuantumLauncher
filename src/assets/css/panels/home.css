@@ -1,240 +1,131 @@
 .home-content {
     width: 100%;
     height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    padding: 27vh 10vw 17vh 50vw;
+}
+
+.v-bar {
+    width: 40%;
+    height: 3px;
+    background-color: var(--bg-second);
+    border-radius: 10px;
 }
 
 .body-home {
-    width: 100%;
-    height: 60%;
     /*background-color: #00bd7a;*/
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-evenly;
 }
 
-.news-list {
-    width: 100%;
-    height: 70%;
-    background-color: var(--bg-second);
-    border-radius: 20px;
-}
-
-.news-list::-webkit-scrollbar {
-    width: 0;
-}
-
-.news-block {
-    transition: opacity 1s;
-    opacity: .4;
-}
-
-.news-block:hover {
-    transition: opacity 1s;
-    opacity: 1;
-}
-
-.info-list {
-    width: 100%;
-    height: 15vh;
-    /*background-color: orange;*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.info-list .server {
-    height: 12vh;
-    width: 100%;
-    background-color: var(--bg-second);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.info-list .server .server-img {
-    height: 100%;
-    /* background-color: red;*/
-}
-
-.info-list .server .server-text {
-    /*background-color: green;*/
-    height: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.info-list .server .server-text .name {
+.body-home h1 {
+    font-family: Poppins;
+    font-size: 12vh;
+    color: #fff;
     margin: 0;
 }
 
-.info-list .server .server-text .desc {
+.body-home p {
+    font-family: Poppins;
+    font-size: 3vh;
+    color: #fff;
+    text-align: left;
     margin: 0;
-    font-size: 3vw;
-    font-weight: 500;
+    font-weight: normal;
 }
 
-.info-list .server .state-text {
-    /* background-color: #bd5d26;*/
-    height: 100%;
-    width: 15vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.info-list .server .state-text .player-count {
-    margin: 0;
-    font-weight: 600;
+.body-home p, .body-home, h1, .body-home button {
+    text-shadow: 0 0 5px #fff;
 }
 
 .play-content {
-    position: relative;
-    /*background-color: rebeccapurple;*/
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5vh;
-}
-
-.play-content .play-btn {
-    min-width: 54vw;
-    height: 8vh;
-    border-radius: 20px;
-    background-color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    padding: 0 5vw 0 5vw;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 12vw;
-    white-space: nowrap;
-    line-height: 59px;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.play-content .play-btn:hover {
-    transform: scale(1.1);
-}
-
-.play-content .play-btn.loading {
-    font-size: 7vw;
-}
-
-.progress-bar {
-    width: 0;
-    height: 2vh;
-    transition: all 0.2s ease;
-    background: transparent;
-}
-
-.progress-bar.active {
+    /*background-color: blueviolet;*/
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1vw;
 }
 
-
-.progress-bar::-webkit-progress-bar {
-    background-color: var(--bg-second);
-    border-radius: 10px;
+.play-content button {
+    padding: 1vh 2vw;
+    font-size: 2vh;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
-.progress-bar::-webkit-progress-value {
-    background-color: var(--primary);
-    border-radius: 10px;
+.play-content button img {
+    width: 2vw;
+    height: 2vw;
 }
 
+.play-content button.discord {
+    -webkit-appearance: none;
+    border: 0;
+    background: rgb(59, 88, 195);
+    background: linear-gradient(180deg, rgba(59, 88, 195, 1) 0%, rgba(31, 153, 192, 1) 100%);
+}
+
+.play-content button.website {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: 0;
+    font-size: 2vw;
+    color: var(--primary);
+    font-weight: 600;
+    font-family: Poppins;
+    padding: 3vh 0;
+}
+
+.play-content button.play-btn {
+    -webkit-appearance: none;
+    border: 0;
+    padding: 1vh 3vw;
+    background: rgb(182, 30, 59);
+    background: linear-gradient(180deg, rgba(182, 30, 59, 1) 0%, rgba(186, 120, 113, 1) 100%);
+    color: #fff;
+    font-family: Poppins;
+    font-size: 4vh;
+    font-weight: 700;
+}
 
 .navigation-menu {
-    width: 100%;
-    height: 10vh;
-    /*background-color: orange;*/
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.navigation-menu .links-content,
-.navigation-menu .buttons-content {
-    height: 100%;
-    /*background-color: aqua;*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-.navigation-menu button,
-.navigation-menu .account{
-    width: 10vh;
-    height: 10vh;
-    background-color: var(--bg-second);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2vw;
+    padding: 3vh 2vw;
+    border: 1px solid #fff;
     border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 0;
-}
-
-.navigation-menu button:hover,
-.navigation-menu .account:hover {
-    transform: scale(1.05);
-}
-
-.navigation-menu button img,
-.navigation-menu .account img{
-    transform: scale(0.6);
-    transition: all 0.3s ease;
-}
-
-.navigation-menu button:hover img,
-.navigation-menu .account:hover img{
-    transform: scale(0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
 }
 
 .navigation-menu .account {
-    background-image: url("../../images/default/steve.png");
-    background-size: cover;
-    background-position: center;
+    width: 7vw;
+    height: 7vw;
+    border: 1px solid #fff;
+    border-radius: 10px;
     background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
 }
 
-.navigation-menu .account .hover {
-    position: relative;
-    height: fit-content;
-    top: -80%;
-    left: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--bg-second);
-    padding: 10px 20px 10px 20px;
-    border-radius: 15px;
-}
-.navigation-menu .account .hover button {
-    background-color: var(--primary);
-    width: fit-content;
-    height: fit-content;
-    color: #fff;
-    padding: 2px 3px 2px 3px;
-    font-size: 2vh;
-    font-family: Poppins;
-    border-radius: 15px;
-}
-.navigation-menu .account .hover.active {
+.navigation-menu .buttons {
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+.navigation-menu .buttons button {
+    cursor: pointer;
+    width: 5vw;
+    height: 5vw;
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 7px;
+    border-radius: 20px;
 }
