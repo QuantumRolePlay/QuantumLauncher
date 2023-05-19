@@ -1,7 +1,7 @@
 {
     "name": "quantum",
     "productName": "QuantumRP Launcher",
-    "version": "1.0.6-ui",
+    "version": "1.0.7",
     "description": "Launcher Minecraft",
     "main": "src/app.js",
     "author": "Sterwim",
